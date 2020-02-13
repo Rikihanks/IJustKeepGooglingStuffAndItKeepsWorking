@@ -35,6 +35,7 @@ Una vez definidas, tenemos que crear un método que será el que se encargue de 
 
     ensureInit():Promise<any> {
     }
+    
 *Ok, ¿y qué hago con esto?*
 
 Ahora vamos a definir el contenido del método "ensureInit".
