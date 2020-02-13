@@ -57,6 +57,7 @@ El método quedaría así:
                 reason => e(reason));
           })
        }
+       
 Donde: La url sería el directorio donde tengáis el archivo config.json
 ¿Habéis visto la magia de `Object.assign()`?
 
@@ -75,6 +76,7 @@ Pues sería exactamente lo mismo pero cambiando la url actual por aquella desde 
                     reason => e(reason));
               })
            }
+           
 Ahora que ya tenemos el servicio es hora de movernos a la parte de decirle a Angular que no arranque hasta que éste no se haya cargado.
 
 ### 2. Hacer que angular dependa del servicio
@@ -98,6 +100,7 @@ Seguro que el vuestro se parece un poco a este:
       bootstrap:    [ AppComponent ]
     })
     export class AppModule { }
+    
 Lo que haremos será añadir un nuevo provider. En nuestro caso, el del servicio que acabamos de crear, y añadirle un par de configuraciones que explicaré ahora.
 
     import { NgModule, APP_INITIALIZER } from '@angular/core';
@@ -122,8 +125,11 @@ Lo que haremos será añadir un nuevo provider. En nuestro caso, el del servicio
       bootstrap:    [ AppComponent ]
     })
     export class AppModule { }
+    
  **APP_INITIALIZER** le dice a angular que tiene que esperar a que este provider se inicie antes de arrancar los demás.
+ 
  **UseFactory** recibirá como parámetro una función que lo que hará será llamar al método ensureInit que creamos antes para asegurarse de que nuestra clase de configuración tiene sus valores seteados.
+ 
  **deps:** Son las dependencias del provider, en este caso el servicio en sí mismo y el cliente http que usamos dentro del servicio.
  
 *¿Y dónde creo la función que llama al ensureInit?*
@@ -134,6 +140,7 @@ Pues en el propio `app.module.ts`. Justo después de `export class appModule{}` 
       appConfig: AppConfigService) {
       return () => appConfig.ensureInit();
     }
+    
 Como veis lo único que hace es llamar al método que creamos antes en el servicio.
 El app.module completo quedaría así:
 
