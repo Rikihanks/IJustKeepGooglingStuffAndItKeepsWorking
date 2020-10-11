@@ -2567,6 +2567,11 @@ input, select, textarea {
 				}
 
 /* Image */
+				
+    .portfolioImage {
+		width: 100%;
+		height: 10%;
+	}
 
 	.image {
 		border-radius: 0.25em;
