@@ -2571,6 +2571,24 @@ input, select, textarea {
     .portfolioImage {
 		width: 100%;
 		height: 10%;
+		padding-left: 20%;
+		padding-right: 20%;
+	}
+
+	.status {
+		color: #33e81b;
+		border: 1px solid lightgray;
+		border-radius: 5px;
+		padding: 5px;
+	}
+
+	
+	.status.finished {
+		color: #33e81b;
+	}
+
+	.status.active {
+		color: #1be4e8;
 	}
 
 	.image {
@@ -3889,7 +3907,6 @@ input, select, textarea {
 		background-image: url("../../images/banner.jpg");
 		background-position: top right;
 		background-repeat: no-repeat;
-		background-size: 100% 100%;
 	}
 
 		#intro p {
